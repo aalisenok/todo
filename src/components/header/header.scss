@@ -1,0 +1,10 @@
+.header {
+  align-items: flex-end;
+  &__title {
+    flex-grow: 1;
+  }
+  &__description {
+    font-size: 1.2rem;
+    color: grey;
+  }
+}

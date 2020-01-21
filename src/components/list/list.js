@@ -1,24 +1,24 @@
 import React from 'react';
 import './list.scss'
-import ListItem from "../list-item/list-item";
+import Item from "../item/item";
 
 
-const List = ({todos}) => {
-    const elements = todos.map((item) => {
+const List = ({ items, onToggleImportant, onToggleDone, onDelete }) => {
+
+    const elements = items.map((item) => {
+        const { id, ...itemProps } = item;
         return (
-            <li>
-                <ListItem
-                    {...item}
-                />
+            <li key={id} className="list-group-item">
+                <Item
+                    { ...itemProps }
+                    onToggleImportant={ () => onToggleImportant(id) }
+                    onToggleDone={ () => onToggleDone(id) }
+                    onDelete={ () => onDelete(id) } />
             </li>
         );
     });
 
-    return (
-        <ul>
-            {elements}
-        </ul>
-    );
+    return (<ul className="list list-group">{ elements }</ul>);
 };
 
 export default List;
